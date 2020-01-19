@@ -1,8 +1,13 @@
 <?php
 
-function showData(){
-	$html = '';
-    $data = DBqueries::getData();
+function showData($isAjax = false, $limit = ''){
+    $html = '';
+    
+    if(!$isAjax){
+        $limit = 1000;
+    }
+
+    $data = DBqueries::getData($limit);
     $count = sizeof($data);
     
     if($count<1){
